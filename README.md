@@ -1,5 +1,5 @@
 # AI Status Line
-Display the latest statistics for your AI chat sessions inside the terminal.  Currently only supports Claide Code with ambitions to expand to other CLI-based AI tools down the road.
+Display the latest statistics for your AI chat sessions inside the terminal.  Currently only supports Claude Code with ambitions to expand to other CLI-based AI tools down the road.
 
 ## Requirements
 - Ruby and its core library
