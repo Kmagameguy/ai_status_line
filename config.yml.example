@@ -1,0 +1,26 @@
+---
+# Select a color scheme.  Supported options are:
+# - default
+# - solarized
+# - nord
+# Removing the color_scheme key will fall back to the default scheme
+color_scheme: "nord"
+
+# Configure which elements you want to display.
+# You can create multiple lines by adding a new entry to the lines list.
+# Each line must wrap its element list in [] (see example below)
+#
+# Available elements:
+# - context_used
+# - model
+# - rate_limits
+# - session_cost
+# - session_length
+# - token_usage
+# - working_directory
+# Removing the lines key will fall back to the default combination of lines and elements.
+#
+lines:
+  - [model, working_directory]
+  - [context_used, session_cost, session_length]
+  - [token_usage, rate_limits]
