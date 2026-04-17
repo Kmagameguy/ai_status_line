@@ -1,3 +1,5 @@
+<img src="images/demo.png" alt="status line showing in Claude Code" width="500px" >
+
 # AI Status Line
 Display the latest statistics for your AI chat sessions inside the terminal.  Currently only supports Claude Code with ambitions to expand to other CLI-based AI tools down the road.
 
