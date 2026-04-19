@@ -9,7 +9,7 @@ module AiStatusLine
         end
 
         def render(_color_scheme)
-          raise NotImplementedError, "Inheriting class must define #render"
+          raise(NotImplementedError, "Inheriting class must define #render")
         end
 
         private

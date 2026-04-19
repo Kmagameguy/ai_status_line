@@ -5,6 +5,7 @@ module AiStatusLine
     module Elements
       class ContextUsed < Base
         BAR_SEGMENTS = 10
+        private_constant :BAR_SEGMENTS
 
         def render(color_scheme)
           context = data.context_window
@@ -16,8 +17,8 @@ module AiStatusLine
         private
 
         def sparkline(percentage)
-          fill_amount = (percentage.to_i / BAR_SEGMENTS).clamp(0, BAR_SEGMENTS)
-          "█" * fill_amount + "░" * (BAR_SEGMENTS - fill_amount)
+          fill_amount = (Integer(percentage, 0) / BAR_SEGMENTS).clamp(0, BAR_SEGMENTS)
+          ("█" * fill_amount) + ("░" * (BAR_SEGMENTS - fill_amount))
         end
       end
     end

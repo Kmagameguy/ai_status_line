@@ -3,7 +3,8 @@
 module AiStatusLine
   module Terminal
     module ColorSchemes
-      Scheme = Struct.new(:primary, :status_info, :status_warning, :status_alert, :text, keyword_init: true)
+      Scheme = Struct.new(:primary, :status_info, :status_warning, :status_alert, :text)
+      private_constant :Scheme
 
       DEFAULT = Scheme.new(
         primary:        "\033[36m",
@@ -12,6 +13,7 @@ module AiStatusLine
         status_alert:   "\033[31m",
         text:           "\033[0m"
       ).freeze
+      public_constant :DEFAULT
 
       SOLARIZED = Scheme.new(
         primary:        "\033[38;5;33m",
@@ -20,6 +22,7 @@ module AiStatusLine
         status_alert:   "\033[38;5;160m",
         text:           "\033[38;5;244m"
       ).freeze
+      public_constant :SOLARIZED
 
       NORD = Scheme.new(
         primary:        "\033[38;5;111m",
@@ -28,12 +31,14 @@ module AiStatusLine
         status_alert:   "\033[38;5;131m",
         text:           "\033[38;5;252m"
       ).freeze
+      public_constant :NORD
 
       REGISTRY = {
         "default"   => DEFAULT,
         "solarized" => SOLARIZED,
         "nord"      => NORD
       }.freeze
+      public_constant :REGISTRY
     end
   end
 end

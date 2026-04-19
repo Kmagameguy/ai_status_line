@@ -6,11 +6,14 @@ module AiStatusLine
   module Terminal
     class Config
       DEFAULT_PATH = File.expand_path("../../../config.yml", __dir__)
+      private_constant :DEFAULT_PATH
+
       DEFAULT_LINES = [
         %w[model working_directory],
         %w[context_used session_cost session_length],
-        %w[token_usage rate_limits],
+        %w[token_usage rate_limits]
       ].freeze
+      private_constant :DEFAULT_LINES
 
       def initialize(path: DEFAULT_PATH)
         @data = YAML.safe_load_file(path) rescue {}

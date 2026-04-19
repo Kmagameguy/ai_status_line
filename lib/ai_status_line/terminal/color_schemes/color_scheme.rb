@@ -11,17 +11,16 @@ module AiStatusLine
         end
 
         def colorize(color)
-          "#{scheme.send(color)}#{yield}#{scheme.text}"
+          "#{scheme.public_send(color)}#{yield}#{scheme.text}"
         end
 
         def colorize_range(integer)
-          color = begin
-            case integer.to_i
+          color =
+            case Integer(integer, 0)
             when 90..Float::INFINITY then scheme.status_alert
             when 70..89 then scheme.status_warning
             else scheme.status_info
             end
-          end
 
           "#{color}#{block_given? ? yield : integer}#{scheme.text}"
         end

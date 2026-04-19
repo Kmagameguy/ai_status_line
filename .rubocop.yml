@@ -1,0 +1,90 @@
+plugins:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rake
+
+AllCops:
+  TargetRubyVersion: 4.0
+  EnabledByDefault: true
+
+Bundler/GemComment:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Layout/RedundantLineBreak:
+  Exclude:
+    - lib/ai_status_line/terminal/color_schemes/scheme.rb
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - test/**/*
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - bin/*
+    - Gemfile
+
+Style/HashLookupMethod:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
+Style/RequireOrder:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: false
+
+Style/TopLevelMethodDefinition:
+  Exclude:
+    - bin/*
+
+Style/ImplicitRuntimeError:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  ConsistentQuotesInMultiline: false
