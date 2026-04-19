@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+Bundler.require
+require "rake/testtask"
+
+desc "Default: run tests"
+task default: :test
+
+Rake::TestTask.new do |task|
+  task.libs    = %w[lib test]
+  task.pattern = "test/**/*_test.rb"
+  task.verbose = true
+end
