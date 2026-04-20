@@ -5,6 +5,7 @@ require "test_helper"
 module AiStatusLine::Terminal::ColorSchemes
   class ColorSchemeTest < ::Minitest::Test
     describe "ColorScheme" do
+      before { ::AiStatusLine::Terminal::Config.any_instance.stubs(:load_config_file).returns({}) }
       describe "REGISTRY" do
         subject { ColorScheme::REGISTRY }
 
