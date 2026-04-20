@@ -16,7 +16,7 @@ module AiStatusLine
       private_constant :DEFAULT_LINES
 
       def initialize(path: DEFAULT_PATH)
-        @data = load_config_file
+        @data = load_config_file(path)
         @data = {} unless @data.is_a?(Hash)
       end
 
@@ -30,7 +30,7 @@ module AiStatusLine
 
       private
 
-      def load_config_file
+      def load_config_file(path)
         YAML.safe_load_file(path) rescue {}
       end
 
