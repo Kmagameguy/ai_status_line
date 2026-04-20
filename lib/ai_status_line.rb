@@ -20,7 +20,6 @@ module AiStatusLine
 
     module ColorSchemes
       autoload :ColorScheme,      "ai_status_line/terminal/color_schemes/color_scheme"
-      autoload :Schemes,          "ai_status_line/terminal/color_schemes/schemes"
     end
 
     module Elements

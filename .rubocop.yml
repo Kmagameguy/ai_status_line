@@ -18,7 +18,7 @@ Layout/HashAlignment:
 
 Layout/RedundantLineBreak:
   Exclude:
-    - lib/ai_status_line/terminal/color_schemes/scheme.rb
+    - lib/ai_status_line/terminal/color_schemes/color_scheme.rb
 
 Lint/ConstantResolution:
   Enabled: false
