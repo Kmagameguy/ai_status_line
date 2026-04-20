@@ -4,6 +4,8 @@ require "yaml"
 require "open3"
 
 module AiStatusLine
+  autoload :Version,              "ai_status_line/version"
+
   module Terminal
     autoload :Buffer,             "ai_status_line/terminal/buffer"
     autoload :Config,             "ai_status_line/terminal/config"
