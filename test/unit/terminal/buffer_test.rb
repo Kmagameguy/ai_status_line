@@ -11,15 +11,13 @@ module AiStatusLine::Terminal
         end
       end
 
+      # rubocop:disable Minitest/NoAssertions
       it "assembles all the data and asks StatusLineRenderer to print the result" do
         StatusLineRenderer.any_instance.expects(:render!).once
 
         Buffer.new({ "model" => { "id" => "claude-opus-4-7[1m]" } }).render!
-
-        # Just putting this here so rubocop doesn't complain about missing assertions.
-        # mocha's .expects(:render!).once expectation is doing the heavy lifting for this test.
-        assert true
       end
+      # rubocop:enable Minitest/NoAssertions
     end
   end
 end
