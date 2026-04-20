@@ -23,6 +23,7 @@ Layout/LineLength:
 Layout/RedundantLineBreak:
   Exclude:
     - lib/ai_status_line/terminal/color_schemes/color_scheme.rb
+    - test/**/*
 
 Lint/ConstantResolution:
   Enabled: false

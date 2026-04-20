@@ -33,6 +33,7 @@ module AiStatusLine::Terminal
               %w[model working_directory],
               %w[context_used session_cost session_length]
             ]
+
             assert_equal expected, subject.lines
           end
         end
@@ -44,8 +45,8 @@ module AiStatusLine::Terminal
           it "uses the default lines configuration" do
             expected = Config.const_get(:DEFAULT_LINES)
 
-            assert expected.is_a?(Array)
-            refute expected.empty?
+            assert_kind_of Array, expected
+            refute_empty expected
             assert_equal expected, subject.lines
           end
         end
