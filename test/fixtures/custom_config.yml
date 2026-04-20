@@ -1,0 +1,5 @@
+---
+color_scheme: "nord"
+lines:
+  - [model, working_directory]
+  - [context_used, session_cost, session_length]
