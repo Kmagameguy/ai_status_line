@@ -26,6 +26,9 @@ Lint/ConstantResolution:
 Lint/MissingSuper:
   Enabled: false
 
+Lint/NumberConversion:
+  Enabled: false
+
 Metrics/ClassLength:
   Exclude:
     - test/**/*

@@ -17,7 +17,7 @@ module AiStatusLine
         private
 
         def sparkline(percentage)
-          fill_amount = (Integer(percentage, 0) / BAR_SEGMENTS).clamp(0, BAR_SEGMENTS)
+          fill_amount = (percentage.to_i / BAR_SEGMENTS).clamp(0, BAR_SEGMENTS)
           ("█" * fill_amount) + ("░" * (BAR_SEGMENTS - fill_amount))
         end
       end
