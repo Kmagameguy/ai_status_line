@@ -34,7 +34,13 @@ module AiStatusLine
       private
 
       def load_config_file(path)
-        YAML.safe_load_file(path) rescue {}
+        if YAML.respond_to?(:safe_load_file)
+          YAML.safe_load_file(path) rescue {}
+        else
+          # rubocop:disable Style/YAMLFileRead
+          YAML.safe_load(File.read(path)) rescue {}
+          # rubocop:enable Style/YAMLFileRead
+        end
       end
 
       attr_reader :data
