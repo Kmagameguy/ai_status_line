@@ -4,7 +4,7 @@ module AiStatusLine
   module Terminal
     module ColorSchemes
       class ColorScheme
-        Scheme = Struct.new(:name, :primary, :status_info, :status_warning, :status_alert, :text)
+        Scheme = Struct.new(:name, :primary, :status_info, :status_warning, :status_alert, :text, keyword_init: true)
         private_constant :Scheme
 
         DEFAULT = Scheme.new(

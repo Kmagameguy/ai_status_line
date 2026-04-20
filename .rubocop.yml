@@ -72,10 +72,13 @@ Style/MethodCalledOnDoEndBlock:
 Style/MissingElse:
   Enabled: false
 
-Style/RequireOrder:
+Style/RedundantStructKeywordInit:
   Enabled: false
 
 Style/RescueModifier:
+  Enabled: false
+
+Style/RequireOrder:
   Enabled: false
 
 Style/StringHashKeys:
