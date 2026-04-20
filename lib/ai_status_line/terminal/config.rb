@@ -8,6 +8,9 @@ module AiStatusLine
       DEFAULT_PATH = File.expand_path("../../../config.yml", __dir__)
       private_constant :DEFAULT_PATH
 
+      DEFAULT_COLOR_SCHEME = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
+      private_constant :DEFAULT_COLOR_SCHEME
+
       DEFAULT_LINES = [
         %w[model working_directory],
         %w[context_used session_cost session_length],
@@ -21,7 +24,7 @@ module AiStatusLine
       end
 
       def color_scheme
-        data["color_scheme"]
+        data["color_scheme"] || DEFAULT_COLOR_SCHEME.name.downcase
       end
 
       def lines
