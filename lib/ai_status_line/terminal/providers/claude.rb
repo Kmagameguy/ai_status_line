@@ -8,11 +8,11 @@ module AiStatusLine
       class Claude < Base
         def initialize(claude_json_data)
           claude_json_data = {} unless claude_json_data.is_a?(Hash)
-          @workspace       = Workspace.new(claude_json_data.dig("workspace"))
-          @model           = Model.new(claude_json_data.dig("model"))
-          @context_window  = ContextWindow.new(claude_json_data.dig("context_window"))
-          @cost            = Cost.new(claude_json_data.dig("cost"))
-          @rate_limits     = RateLimits.new(claude_json_data.dig("rate_limits"))
+          @workspace       = Workspace.new(claude_json_data["workspace"])
+          @model           = Model.new(claude_json_data["model"])
+          @context_window  = ContextWindow.new(claude_json_data["context_window"])
+          @cost            = Cost.new(claude_json_data["cost"])
+          @rate_limits     = RateLimits.new(claude_json_data["rate_limits"])
         end
 
         class Workspace < Base::Workspace

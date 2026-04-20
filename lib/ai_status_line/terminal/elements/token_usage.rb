@@ -12,7 +12,7 @@ module AiStatusLine
         private
 
         def format_count(count)
-          return count unless count.to_i >= 1_000
+          return count if count.to_i < 1_000
 
           "#{(count / 1_000.0).round(1)}k"
         end

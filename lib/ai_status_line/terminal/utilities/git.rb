@@ -13,7 +13,7 @@ module AiStatusLine
         def current_branch
           return unless working_directory
 
-          out, status = Open3.capture2("git", "-c", working_directory, "symbolic-ref", "--short", "HEAD")
+          out, status = Open3.capture2("git", "-C", working_directory, "symbolic-ref", "--short", "HEAD")
           out.strip if status.success?
         end
 

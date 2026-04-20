@@ -12,7 +12,7 @@ module AiStatusLine
         "token_usage"       => TokenUsage,
         "rate_limits"       => RateLimits
       }.freeze
+      public_constant :REGISTRY
     end
   end
 end
-

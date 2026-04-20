@@ -4,6 +4,7 @@ module AiStatusLine
   module Terminal
     class StatusLineRenderer
       DEFAULT_SEPARATOR = " | "
+      private_constant :DEFAULT_SEPARATOR
 
       def initialize(data:, config:, color_scheme:)
         @data         = data
