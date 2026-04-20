@@ -16,6 +16,10 @@ Bundler/GemVersion:
 Layout/HashAlignment:
   Enabled: false
 
+Layout/LineLength:
+  Exclude:
+    - test/**/*
+
 Layout/RedundantLineBreak:
   Exclude:
     - lib/ai_status_line/terminal/color_schemes/color_scheme.rb
