@@ -9,5 +9,4 @@ task default: :test
 Rake::TestTask.new do |task|
   task.libs    = %w[lib test]
   task.pattern = "test/**/*_test.rb"
-  task.verbose = true
 end
