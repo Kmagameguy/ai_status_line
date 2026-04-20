@@ -13,6 +13,10 @@ Bundler/GemComment:
 Bundler/GemVersion:
   Enabled: false
 
+Layout/ExtraSpacing:
+  Exclude:
+    - lib/ai_status_line.rb
+
 Layout/HashAlignment:
   Enabled: false
 
