@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "stringio"
 
 module AiStatusLine::Terminal
   class StatusLineRendererTest < ::Minitest::Test
@@ -17,8 +18,9 @@ module AiStatusLine::Terminal
           git: ::AiStatusLine::Terminal::Utilities::Git.new(model_data.workspace.current_directory)
         )
       end
+      let(:io) { StringIO.new }
 
-      subject { StatusLineRenderer.new(data: data, config: ::AiStatusLine::Terminal::Config.new, color_scheme: color_scheme) }
+      subject { StatusLineRenderer.new(data: data, config: ::AiStatusLine::Terminal::Config.new, color_scheme: color_scheme, io: io) }
       before  do
         ::AiStatusLine::Terminal::Config.any_instance.stubs(:load_config_file).returns({})
         ::AiStatusLine::Terminal::Utilities::Git.any_instance.stubs(:current_branch).returns(nil)
@@ -26,20 +28,17 @@ module AiStatusLine::Terminal
 
       describe "#render!" do
         it "assembles the data elements and config into lines" do
-          assert_equal 3, subject.__send__(:status_lines).count
+          subject.render!
+          assert_equal 3, io.string.lines.count
         end
 
-        it "ensures each element is a string" do
-          subject.__send__(:status_lines).each do |status_line|
-            assert_kind_of String, status_line
-          end
-        end
-
-        # this test probably needs revision. Basically just counting the number of
-        # expected pipes based on the number of elements & lines displayed by default
-        # at time of writing.
-        it "separates all elements with a pipe by default" do
-          assert_equal 4, subject.__send__(:status_lines).join.scan("|").count
+        it "renders the data in accordance with the configuration" do
+          expected_string =
+            "\e[36mOpus\e[0m | /current/working/directory\n" +
+            "\e[32mctx: ░░░░░░░░░░ 8% (200,000)\e[0m | \e[33msession cost: $0.01\e[0m | \u23f1\ufe0f 45s\n" +
+            "tkn in: 15.2k, out: 4.5k | rate limit use: \e[32m24% (5h)\e[0m, \e[32m41% (7d)\e[0m\n"
+          subject.render!
+          assert_equal expected_string, io.string
         end
       end
     end
