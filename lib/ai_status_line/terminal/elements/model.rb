@@ -5,7 +5,11 @@ module AiStatusLine
     module Elements
       class Model < Base
         def render(color_scheme)
-          color_scheme.colorize(:primary) { data.model.current }
+          model_details = data.model.current
+          model_details += (" " + "🧠") if data.model.thinking?
+          model_details += (" " + "(#{data.model.effort})") if data.model.effort
+
+          color_scheme.colorize(:primary) { model_details }
         end
       end
     end

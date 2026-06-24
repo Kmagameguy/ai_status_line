@@ -5,7 +5,8 @@ require "test_helper"
 module AiStatusLine::Terminal::Elements
   class ModelTest < ::Minitest::Test
     describe "Model" do
-      let(:model_data)   { ::AiStatusLine::Terminal::Providers::Claude.new(JSON.load_file(File.join(File.expand_path(TEST_ROOT), "fixtures", "claude_json_data.json"))) }
+      let(:json_data)    { JSON.load_file(File.join(File.expand_path(TEST_ROOT), "fixtures", "claude_json_data.json")) }
+      let(:model_data)   { ::AiStatusLine::Terminal::Providers::Claude.new(json_data) }
       let(:color_scheme) { ::AiStatusLine::Terminal::ColorSchemes::ColorScheme.new(config: ::AiStatusLine::Terminal::Config.new) }
       let(:data) do
         Data.new(
@@ -22,10 +23,50 @@ module AiStatusLine::Terminal::Elements
       before  { ::AiStatusLine::Terminal::Config.any_instance.stubs(:load_config_file).returns({}) }
 
       describe "#render" do
+        before do
+          @theme = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
+        end
+
         it "displays the text using the primary color" do
-          theme    = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
           result   = subject.render(color_scheme)
-          expected = "#{theme.primary}Opus#{theme.text}"
+          expected = "#{@theme.primary}Opus 🧠 (high)#{@theme.text}"
+
+          assert_equal expected, result
+        end
+
+        it "excludes the 🧠 emoji when thinking isn't available" do
+          json_data.delete("thinking")
+
+          expected = "#{@theme.primary}Opus (high)#{@theme.text}"
+          result   = subject.render(color_scheme)
+
+          assert_equal expected, result
+        end
+
+        it "excludes the 🧠 emoji when thinking is disabled" do
+          json_data["thinking"]["enabled"] = false
+
+          expected = "#{@theme.primary}Opus (high)#{@theme.text}"
+          result   = subject.render(color_scheme)
+
+          assert_equal expected, result
+        end
+
+        it "excludes the effort level when it isn't available" do
+          json_data.delete("effort")
+
+          expected = "#{@theme.primary}Opus 🧠#{@theme.text}"
+          result   = subject.render(color_scheme)
+
+          assert_equal expected, result
+        end
+
+        it "only displays the model name when thinking and effort aren't available" do
+          json_data.delete("thinking")
+          json_data.delete("effort")
+
+          expected = "#{@theme.primary}Opus#{@theme.text}"
+          result   = subject.render(color_scheme)
 
           assert_equal expected, result
         end

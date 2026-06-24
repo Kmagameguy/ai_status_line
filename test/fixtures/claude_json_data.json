@@ -2,6 +2,9 @@
   "cwd": "/current/working/directory",
   "session_id": "abc123...",
   "transcript_path": "/path/to/transcript.jsonl",
+  "effort": {
+    "level": "high"
+  },
   "model": {
     "id": "claude-opus-4-7",
     "display_name": "Opus"
@@ -11,7 +14,7 @@
     "project_dir": "/original/project/directory",
     "added_dirs": []
   },
-  "version": "2.1.90",
+  "version": "2.1.190",
   "output_style": {
     "name": "default"
   },
@@ -36,6 +39,10 @@
     }
   },
   "exceeds_200k_tokens": false,
+  "fast_mode": false,
+  "thinking": {
+    "enabled": true
+  },
   "rate_limits": {
     "five_hour": {
       "used_percentage": 23.5,

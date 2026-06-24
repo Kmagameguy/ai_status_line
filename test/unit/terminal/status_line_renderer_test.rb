@@ -34,7 +34,7 @@ module AiStatusLine::Terminal
 
         it "renders the data in accordance with the configuration" do
           expected_string =
-            "\e[36mOpus\e[0m | /current/working/directory\n" +
+            "\e[36mOpus 🧠 (high)\e[0m | /current/working/directory\n" +
             "\e[32mctx: ░░░░░░░░░░ 8% (200,000)\e[0m | \e[33msession cost: $0.01\e[0m | \u23f1\ufe0f 45s\n" +
             "tkn in: 15.2k, out: 4.5k | rate limit use: \e[32m24% (5h)\e[0m, \e[32m41% (7d)\e[0m\n"
           subject.render!

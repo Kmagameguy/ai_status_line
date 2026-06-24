@@ -8,8 +8,9 @@ module AiStatusLine
       class Claude < Base
         def initialize(claude_json_data)
           claude_json_data = {} unless claude_json_data.is_a?(Hash)
+          json_data_for_model = claude_json_data.slice("model", "effort", "thinking")
           @workspace       = Workspace.new(claude_json_data["workspace"])
-          @model           = Model.new(claude_json_data["model"])
+          @model           = Model.new(json_data_for_model)
           @context_window  = ContextWindow.new(claude_json_data["context_window"])
           @cost            = Cost.new(claude_json_data["cost"])
           @rate_limits     = RateLimits.new(claude_json_data["rate_limits"])
@@ -25,7 +26,9 @@ module AiStatusLine
         class Model < Base::Model
           def initialize(options)
             options  = {} unless options.is_a?(Hash)
-            @current = options["display_name"] || "none"
+            @current = options.dig("model", "display_name") || "none"
+            @effort  = options.dig("effort", "level")
+            @thinking = options.dig("thinking", "enabled") || false
           end
         end
 

@@ -11,7 +11,9 @@ module AiStatusLine
         end
 
         class Model
-          attr_reader :current
+          attr_reader :current, :effort, :thinking
+
+          alias_method :thinking?, :thinking
         end
 
         class ContextWindow
