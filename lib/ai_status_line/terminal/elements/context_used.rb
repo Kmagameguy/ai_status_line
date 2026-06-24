@@ -10,7 +10,8 @@ module AiStatusLine
         def render(color_scheme)
           context = data.context_window
           color_scheme.colorize_range(context.percentage_used) do
-            "ctx: #{sparkline(context.percentage_used)} #{context.percentage_used}% (#{format_number(context.max_size)})"
+            graph = sparkline(context.percentage_used)
+            "ctx: #{graph} #{context.percentage_used}% (#{format_number(context.max_size)})"
           end
         end
 
