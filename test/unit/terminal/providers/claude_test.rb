@@ -29,12 +29,20 @@ module AiStatusLine::Terminal::Providers
         describe "#initialize" do
           it "has values from the json" do
             refute_nil claude.model.current
+            refute_nil claude.model.effort
+            assert claude.model.thinking
           end
 
           it "sets defaults when json data is not present" do
             model_data.delete("model")
+            model_data.delete("thinking")
 
             assert_equal "none", claude.model.current
+            refute claude.model.thinking
+          end
+
+          it "defines a thinking? predicate method" do
+            assert_predicate claude.model, :thinking?
           end
         end
       end

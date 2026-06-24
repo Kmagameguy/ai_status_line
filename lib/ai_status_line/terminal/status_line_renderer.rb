@@ -6,19 +6,20 @@ module AiStatusLine
       DEFAULT_SEPARATOR = " | "
       private_constant :DEFAULT_SEPARATOR
 
-      def initialize(data:, config:, color_scheme:)
+      def initialize(data:, config:, color_scheme:, io: $stdout)
         @data         = data
         @config       = config
         @color_scheme = color_scheme
+        @io = io
       end
 
       def render!
-        status_lines.each { |line| puts line }
+        io.puts(status_lines)
       end
 
       private
 
-      attr_reader :data, :config, :color_scheme
+      attr_reader :data, :config, :color_scheme, :io
 
       def status_lines
         config.lines.map do |line_elements|

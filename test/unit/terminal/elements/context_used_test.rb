@@ -25,7 +25,7 @@ module AiStatusLine::Terminal::Elements
           it "renders a sparkline and context usage statistics using the status_info color" do
             theme    = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
             result   = subject.render(color_scheme)
-            expected = "#{theme.status_info}ctx: ░░░░░░░░░░ 8% (200000)#{theme.text}"
+            expected = "#{theme.status_info}ctx: ░░░░░░░░░░ 8% (200,000)#{theme.text}"
 
             assert_equal expected, result
           end
@@ -39,7 +39,7 @@ module AiStatusLine::Terminal::Elements
           it "renders a sparkline and context usage statistics using the status_warning color" do
             theme    = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
             result   = subject.render(color_scheme)
-            expected = "#{theme.status_warning}ctx: ███████░░░ 70% (200000)#{theme.text}"
+            expected = "#{theme.status_warning}ctx: ███████░░░ 70% (200,000)#{theme.text}"
 
             assert_equal expected, result
           end
@@ -53,7 +53,7 @@ module AiStatusLine::Terminal::Elements
           it "renders a sparkline and context usage statistics using the stats_alert color" do
             theme    = ::AiStatusLine::Terminal::ColorSchemes::ColorScheme::DEFAULT
             result   = subject.render(color_scheme)
-            expected = "#{theme.status_alert}ctx: █████████░ 90% (200000)#{theme.text}"
+            expected = "#{theme.status_alert}ctx: █████████░ 90% (200,000)#{theme.text}"
 
             assert_equal expected, result
           end
